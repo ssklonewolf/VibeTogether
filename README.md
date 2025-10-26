@@ -34,5 +34,8 @@ git remote add upstream  https://github.com/SukhbirSinghKhalsa/VibeTogether
 ```bash
 git checkout -b your-branch-name-goes-here
 ```
-X. Will add task list in README.md files as we progress
+Task List File Link:     
+(Main Branch) Navigate to Task_list --> Tasks.txt  
+or use the link below    
+https://github.com/SukhbirSinghKhalsa/VibeTogether/blob/main/Task_List/Tasks.txt
 
