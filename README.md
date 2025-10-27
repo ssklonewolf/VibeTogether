@@ -11,8 +11,19 @@ Practice Repo for learning together
 5. and more 
 
 
+### Task List File:     
+(Main Branch) Navigate to Task_List → Tasks.txt  
+or use the link below    
+https://github.com/SukhbirSinghKhalsa/VibeTogether/blob/main/Task_List/Tasks.txt
+
+
 ### How to get started?
 1. Fork this Repo   
+Fork this repo, to be able to have its full copy in your repositories list
+In this repository, at top right you can see the fork option, click on it
+<img width="949" height="475" alt="image" src="https://github.com/user-attachments/assets/8aa23cbe-2875-4441-9345-b8860d407fa7" />
+
+
 2. clone this Repo from your forked repo    
 ```bash
 git clone https://github.com/[yourgithubname]/VibeTogether
@@ -34,8 +45,4 @@ git remote add upstream  https://github.com/SukhbirSinghKhalsa/VibeTogether
 ```bash
 git checkout -b your-branch-name-goes-here
 ```
-Task List File Link:     
-(Main Branch) Navigate to Task_list --> Tasks.txt  
-or use the link below    
-https://github.com/SukhbirSinghKhalsa/VibeTogether/blob/main/Task_List/Tasks.txt
 

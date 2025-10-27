@@ -1,34 +1,119 @@
-Task 1:Fork this repo, to be able to have its full copy in your repositories list
+--------------------------------INTIAL SETUP ----------------------------------
+Task 1: (From Github UI)
+Fork this repo, to be able to have its full copy in your repositories list
+In this repository, at top right you can see the fork option, click on it
+
 
 Task 2: clone this repo in your local system
-use git clone command
+use git clone <repo-link> command
+
 
 Task 3: Create a folder with your name say SSK
-For windows --> New folder --> your name
-For ubuntu --> mkdir folder_name
+For windows → New folder → your name
+For ubuntu → mkdir folder_name
 
-Task 4: Inside your folder do,  create 4 folders inside it namely
+
+Task 4: Inside your folder, Create 4 folders inside it namely
 Terraform
 Docker
 Kubernetes
 Misc
 
-Task 5: Add some file in each folders
-Terraform  --> main.tf
-Docker     --> Dockerfile
-Kubernetes --> pod.yaml
-Misc       --> notes.txt
 
-Task 6: Try to do step 4,5,6 with some script whichever your system supports
+Task 5: Add some file in each folders
+Terraform  → main.tf
+Docker     → Dockerfile
+Kubernetes → pod.yaml
+Misc       → notes.txt
+
+
+(*optional)
+Task 6: Try to do step 4,5 with some script whichever your system supports
 .cmd, .ps1, .sh, .bash
-(optional)
+
 
 Task 7: push this folders back to github
-use git add, commit, push, and authentication in between
+create a new branch, do not directly push to main branch
+use 
+git checkout to create a branch
+git add to move your changes from working directory (working tree) to staging area,
+git commit to move your changes from staging area to local repository 
+git push to push the local code to github
 
-Task 8: create a PR to push the changes back to original repository
-Forked repository --> Pull Request --> Create PR for your changes by comparing your branches
+for authentication, setup your username, email with
+git config user.email "your github email address here"
+git config user.name "your github user name here"
 
-Task 9: pull latest changes from original repisitory once your PR is merged into main
+
+Task 8: (In GitHub UI) Create a PR to push the changes back to original repository
+Forked repository → Pull Request → Create PR for your changes by comparing your branches
+to original Repository Main branch
+
+Task 9: (In Github UI) Pull latest changes from original repisitory to your forked repository,
+once your PR is merged into main of original repository
+
+
+--------------------------------AZURE CLI TASKS ----------------------------------
+
+Task 10: Under Misc folder, Perform Azure cli tasks and attach screenshots 
+
+
+Task 11: Install Azure CLI and Check if it is successfully Installed
+az --version 
+
+
+Task 12: Find out command to list out all the az commands as a document
+
+
+Task 13: Create a Resource Groups & list all the resource groups with az command
+Additionally try to display the list in table format
+
+
+Task 14: Create a Storage Accounts & list all the Storage Accounts with az command
+Additionally try to display the list in table format
+
+
+Task 15: Create a Storage Container & list all the Storage Container with az command
+Additionally try to display the list in table format
+
+
+Task 16: Upload a file in Storage Container & list all the files under Storage Container with az command
+Additionally try to display the list in table format
+
+
+(Optional) (Advanced)
+Task 17: Check Storage Account Name already Exists
+
+
+Task 18: Find a way to install azure devops pipeline commands into az cli
+
+
+Task 19: Trigger a already existing pipeline with az cli commands (az pipelines)
+
+
+Task 20: List out environemnt variables of Azure Container Apps
+
+
+Task 21: Check the current working condition of Azure Container Apps
+
+--------------------------------Terraform TASKS ----------------------------------
+
+Task 22: Inside Terraform folder, add the code for all the tasks in this section
+
+
+Task 23: Install Terraform, set envrionment variable if using windows, and verify terraform is installed
+terraform --version
+
+Task 24: Create a Resource Group with Terraform using Terraform lifecylcle init, fmt, plan, validate, apply
+push the code to GitHub
+
+
+Task 25: Create a Storage account and add Implicit Dependency
+push the code to GitHub
+
+
+Task 26: Crete a Storage Container and add Explicit Dependency
+push the code to GitHub
+
 
 
