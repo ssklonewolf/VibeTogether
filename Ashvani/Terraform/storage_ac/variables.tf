@@ -1,11 +1,3 @@
-variable "rg" {
-  type = map(object({
-    name = string
-    location = string
-    managed_by = optional(string, null)
-    tags = optional(map(string),{})
-  }))
-}
 variable "storage" {
   type = map(object({
     name = string
@@ -24,6 +16,7 @@ variable "storage" {
     shared_access_key_enabled = optional(bool)
     public_network_access_enabled = optional(bool)
     default_to_oauth_authentication = optional(bool)
+  
     custom_domain = optional(object({
       name          = string
       use_subdomain = optional(bool)
