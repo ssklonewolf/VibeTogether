@@ -1,0 +1,96 @@
+C:\Users\hp>az group create --name maheshd1ResourceGroup --location eastus
+{
+  "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/maheshd1ResourceGroup",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "maheshd1ResourceGroup",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+C:\Users\hp>az group list
+[
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/shikhar",
+    "location": "canadacentral",
+    "managedBy": null,
+    "name": "shikhar",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/rg-akas",
+    "location": "westus",
+    "managedBy": null,
+    "name": "rg-akas",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {},
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/rg-1",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "rg-1",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {
+      "dev": "12"
+    },
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/NetworkWatcherRG",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "NetworkWatcherRG",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/maheshdResourceGroup",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "maheshdResourceGroup",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/b3e9b690-1f69-4cae-899a-6a1c65b2db91/resourceGroups/maheshd1ResourceGroup",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "maheshd1ResourceGroup",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]
+
+C:\Users\hp>az group list --output table
+Name                   Location       Status
+---------------------  -------------  ---------
+shikhar                canadacentral  Succeeded
+rg-akas                westus         Succeeded
+rg-1                   eastus         Succeeded
+NetworkWatcherRG       eastus         Succeeded
+maheshdResourceGroup   eastus         Succeeded
+maheshd1ResourceGroup  eastus         Succeeded
+
+C:\Users\hp>
