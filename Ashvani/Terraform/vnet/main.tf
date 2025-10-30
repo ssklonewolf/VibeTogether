@@ -1,44 +1,53 @@
-resource "azurerm_virtual_network" "vnet" {
-  for_each            = var.vnet
+
+resource "azurerm_virtual_network" "this" {
+  for_each = var.vnet
+
   name                = each.value.name
-  location            = each.value.location
   resource_group_name = each.value.resource_group_name
-  address_space       = each.value.address_space
+  location            = each.value.location
 
-  dns_servers         = lookup(each.value, "dns_servers", null)
-  tags                = lookup(each.value, "tags", null)
+  # Either address_space or ip_address_pool (using address_space)
+  address_space = lookup(each.value, "address_space", [])
 
-  enable_ddos_protection = lookup(each.value, "enable_ddos_protection", false)
-  enable_vm_protection   = lookup(each.value, "enable_vm_protection", false)
-}
+  # Optional parameters (using lookup)
+  dns_servers                   = lookup(each.value, "dns_servers", [])
+  bgp_community                 = lookup(each.value, "bgp_community", null)
+  edge_zone                     = lookup(each.value, "edge_zone", null)
+  flow_timeout_in_minutes       = lookup(each.value, "flow_timeout_in_minutes", null)
+  private_endpoint_vnet_policies = lookup(each.value, "private_endpoint_vnet_policies", "Disabled")
 
-resource "azurerm_subnet" "subnet" {
-  for_each = { for vnet_key, vnet_value in var.vnet : vnet_key => vnet_value.subnets if length(vnet_value.subnets) > 0 }
-
-  dynamic "subnet" {
-    for_each = each.value
+  # DDoS Protection (optional)
+  dynamic "ddos_protection_plan" {
+    for_each = lookup(each.value, "ddos_protection_plan", null) != null ? [each.value.ddos_protection_plan] : []
     content {
-      name                 = subnet.value.name
-      resource_group_name  = azurerm_virtual_network.vnet[each.key].resource_group_name
-      virtual_network_name = azurerm_virtual_network.vnet[each.key].name
-      address_prefix       = subnet.value.address_prefix
-
-      service_endpoints = lookup(subnet.value, "service_endpoints", null)
-      private_endpoint_network_policies = lookup(subnet.value, "private_endpoint_network_policies", null)
-      private_link_service_network_policies = lookup(subnet.value, "private_link_service_network_policies", null)
+      id     = lookup(ddos_protection_plan.value, "id", null)
+      enable = lookup(ddos_protection_plan.value, "enable", false)
     }
   }
-}
 
-resource "azurerm_virtual_network_peering" "peering" {
-  for_each = { for vnet_key, vnet_value in var.vnet : vnet_key => vnet_value.peerings if length(vnet_value.peerings) > 0 }
-
-  dynamic "peering" {
-    for_each = each.value
+  # Encryption (optional)
+  dynamic "encryption" {
+    for_each = lookup(each.value, "encryption", null) != null ? [each.value.encryption] : []
     content {
-      name                      = peering.value.name
-      resource_group_name       = azurerm_virtual_network.vnet[each.key].resource_group_name
-      virtual_network_name      = azurerm_virtual_network.vnet[each.key].name
-      remote_virtual_network_id = peering.value.remote_virtual_network_id
+      enforcement = lookup(encryption.value, "enforcement", "AllowUnencrypted")
+    }
+  }
 
-      allow_forwarded_traffic = lookup(peering.value, "allow_forwarded_traffic", false)
+  # Subnets (inline + dynamic)
+  dynamic "subnet" {
+    for_each = lookup(each.value, "subnets", [])
+    iterator = sn
+    content {
+      name         = sn.value.name
+      address_prefixes = lookup(sn.value, "address_prefixes", [])
+      security_group   = lookup(sn.value, "security_group", null)
+      route_table_id   = lookup(sn.value, "route_table_id", null)
+
+      service_endpoints = lookup(sn.value, "service_endpoints", [])
+      private_endpoint_network_policies = lookup(sn.value, "private_endpoint_network_policies", null)
+      private_link_service_network_policies_enabled = lookup(sn.value, "private_link_service_network_policies_enabled", true)
+    }
+  }
+
+  tags = lookup(each.value, "tags", {})
+}
