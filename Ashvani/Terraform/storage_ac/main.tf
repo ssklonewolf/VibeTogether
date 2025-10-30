@@ -22,8 +22,8 @@ resource "azurerm_storage_account" "storage" {
   dynamic "custom_domain" {
     for_each = each.value.custom_domain == null ? [] : [each.value.custom_domain]
     content {
-      name          = custom_domain.value.name
-      use_subdomain = custom_domain.value.use_subdomain
+      name          = lookup(custom_domain.value,"name",null)
+        use_subdomain = lookup(custom_domain.value,"use_subdomain",null)#custom_domain.value.use_subdomain
     }
   }
 
@@ -39,10 +39,10 @@ resource "azurerm_storage_account" "storage" {
   dynamic "network_rules" {
     for_each = each.value.network_rules == null ? [] : [each.value.network_rules]
     content {
-      default_action             = network_rules.value.default_action
-      bypass                     = network_rules.value.bypass
-      ip_rules                   = network_rules.value.ip_rules
-      virtual_network_subnet_ids = network_rules.value.virtual_network_subnet_ids
+      default_action             = lookup(network_rules.value,"default_action",null)
+      bypass                     = lookup(network_rules.value,"bypass",null)
+      ip_rules                   = lookup(network_rules.value,"ip_rules",null)
+      virtual_network_subnet_ids = lookup(network_rules.value,"virtual_network_subnet_ids",null)
     }
   }
 

@@ -7,4 +7,8 @@ module "storage" {
   depends_on = [ module.rg ]
   storage = var.storage
 }
-
+module "vnet" {
+  source = "./vnet"
+  depends_on = [ module.rg ]
+  vnet = var.vnet
+}
