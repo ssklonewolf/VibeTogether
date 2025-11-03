@@ -1,4 +1,5 @@
 --------------------------------INTIAL SETUP ----------------------------------
+
 Task 1: 
 (From Github UI)
 Fork this repo, to be able to have its full copy in your repositories list
@@ -150,11 +151,13 @@ In any task 24,25,26, try to add new resource block and observe the changes
 Example:
 Add a new resource group 
 
+
 Task 28:
 (Configuration scenario 2 -  Change in the configuration file - Deletion (.tf file) )
 In any task 24,25,26, try to delete exisiting resource block and observe the changes
 Example:
 comment out the storage container
+
 
 Task 29:
 (Configuration scenario 3 -  Change in the Azure portal - Deletion/ Modification of resources created with terraform)
