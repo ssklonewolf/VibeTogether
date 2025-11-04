@@ -4,6 +4,13 @@ terraform {
         source = "hashicorp/azurerm"
         version = "4.5"
     }
+    
+  }
+  backend "azurerm" {
+    resource_group_name = "rg-1"
+    storage_account_name = "sauravstorageacct1"
+    container_name = "container"
+    key                  = "prod.terraform.tfstate"
   }
 }
 provider "azurerm" {

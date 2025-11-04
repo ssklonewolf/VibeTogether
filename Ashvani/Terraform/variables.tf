@@ -54,10 +54,10 @@ variable "vnet" {
     address_space = optional(list(string))
 
     # Optional parameters
-    dns_servers                   = optional(list(string))
-    bgp_community                 = optional(string)
-    edge_zone                     = optional(string)
-    flow_timeout_in_minutes       = optional(number)
+    dns_servers                    = optional(list(string))
+    bgp_community                  = optional(string)
+    edge_zone                      = optional(string)
+    flow_timeout_in_minutes        = optional(number)
     private_endpoint_vnet_policies = optional(string)
 
     # DDoS protection block
@@ -73,12 +73,12 @@ variable "vnet" {
 
     # Subnets block
     subnets = optional(list(object({
-      name                                      = string
-      address_prefixes                          = list(string)
-      security_group                            = optional(string)
-      route_table_id                            = optional(string)
-      service_endpoints                         = optional(list(string))
-      private_endpoint_network_policies         = optional(string)
+      name                                          = string
+      address_prefixes                              = list(string)
+      security_group                                = optional(string)
+      route_table_id                                = optional(string)
+      service_endpoints                             = optional(list(string))
+      private_endpoint_network_policies             = optional(string)
       private_link_service_network_policies_enabled = optional(bool)
     })))
 

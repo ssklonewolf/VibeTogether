@@ -36,16 +36,16 @@ resource "azurerm_virtual_network" "this" {
   # Subnets (inline + dynamic)
   dynamic "subnet" {
     for_each = lookup(each.value, "subnets", [])
-    iterator = sn
+    # iterator = sn
     content {
-      name         = sn.value.name
-      address_prefixes = lookup(sn.value, "address_prefixes", [])
-      security_group   = lookup(sn.value, "security_group", null)
-      route_table_id   = lookup(sn.value, "route_table_id", null)
+      name         = subnet.value.name
+      address_prefixes = lookup(subnet.value.address_prefixes, "address_prefixes", [])
+      security_group   = lookup(subnet.value.security_group, "security_group", null)
+      route_table_id   = lookup(subnet.value.route_table_id, "route_table_id", null)
 
-      service_endpoints = lookup(sn.value, "service_endpoints", [])
-      private_endpoint_network_policies = lookup(sn.value, "private_endpoint_network_policies", null)
-      private_link_service_network_policies_enabled = lookup(sn.value, "private_link_service_network_policies_enabled", true)
+      service_endpoints = lookup(subnet.value.service_endpoints, "service_endpoints", [])
+      private_endpoint_network_policies = lookup(subnet.value.private_endpoint_network_policies, "private_endpoint_network_policies", null)
+      private_link_service_network_policies_enabled = lookup(subnet.value.private_link_service_network_policies_enabled, "private_link_service_network_policies_enabled", true)
     }
   }
 
