@@ -14,7 +14,7 @@ resource "azurerm_virtual_network" "this" {
   bgp_community                 = lookup(each.value, "bgp_community", null)
   edge_zone                     = lookup(each.value, "edge_zone", null)
   flow_timeout_in_minutes       = lookup(each.value, "flow_timeout_in_minutes", null)
-  private_endpoint_vnet_policies = lookup(each.value, "private_endpoint_vnet_policies", "Disabled")
+//  private_endpoint_vnet_policies = lookup(each.value, "private_endpoint_vnet_policies", "Disabled")
 
   # DDoS Protection (optional)
   dynamic "ddos_protection_plan" {
